@@ -25,7 +25,7 @@ for application to PMoA maintenance costs.
 $(TYPEDSIGNATURES)
 """
 function LL2M(x::Float64, p::NTuple{2,Float64})
-    1 / LL2(x, p)
+    1 - log(LL2(x, p))
 end
 
 """
