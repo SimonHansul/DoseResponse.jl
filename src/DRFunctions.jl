@@ -8,11 +8,10 @@ function LL2(x::Float64, p::NTuple{2,Float64})
 end
 
 """
-Two-parameter log-logistic function transformed to increasing function
-for application to GUTS module.
+Cumulative hazard function of the log-logistic distribution. Mainly used for application in GUTS.
 """
 function LL2h(x::Float64, p::NTuple{2,Float64})
-    1 - log(LL2(x, p))
+    -log(LL2(x, p))
 end
 
 function LL2h(x::Vector{Float64}, p::NTuple{2,Float64})
