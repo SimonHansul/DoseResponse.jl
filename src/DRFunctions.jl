@@ -4,7 +4,7 @@ Two-parameter log-logistic function.
 $(TYPEDSIGNATURES)
 """
 function LL2(x::Float64, p::NTuple{2,Float64})
-    return 1 / (1 + (x / p[1]) ^ p[2])
+    return (1 / (1 + Complex(x / p[1]) ^ p[2])).re
 end
 
 """
