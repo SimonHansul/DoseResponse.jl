@@ -1,7 +1,11 @@
 
 """
-Two-parameter log-logistic function.
-$(TYPEDSIGNATURES)
+Two-parameter log-logistic function. 
+The expression `y = 1 / (1 + (x/p[1])^p[2])` is extended to 
+`y = (1 / (1 + Complex(x/p[1])^p[2])).re`. 
+This way we deal with domain errors which might occur if `x` or `p[1]` temporarily takes a negative value. 
+Negative values should theoretically be impossible, but very small values of `x` (`<= 1e-20`) might occur during ODE solving. 
+In this case, the returned real part of the expression evaluates to 1, which is in turn the expected behaviour.  
 """
 function LL2(x::Float64, p::NTuple{2,Float64})
     return (1 / (1 + Complex(x / p[1]) ^ p[2])).re
